@@ -1,5 +1,5 @@
 resource "aws_instance" "web" {
-  ami                    = data.aws_ami.ubuntu_2404.id
+  ami                    = "ami-00d8fc944fb171e29"
   instance_type          = "t3.micro"
   subnet_id              = aws_subnet.public.id
   private_ip             = "10.0.0.5"
@@ -8,7 +8,7 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_instance" "ansible" {
-  ami           = data.aws_ami.ubuntu_2404.id
+  ami                    = "ami-00d8fc944fb171e29"
   instance_type = "t3.micro"
   subnet_id     = aws_subnet.private.id
   private_ip    = "10.0.0.135"
@@ -22,7 +22,7 @@ resource "aws_instance" "ansible" {
 
 
 resource "aws_instance" "monitoring" {
-  ami           = data.aws_ami.ubuntu_2404.id
+  ami           = "ami-00d8fc944fb171e29"
   instance_type = "t3.micro"
   subnet_id     = aws_subnet.private.id
   private_ip    = "10.0.0.136"
