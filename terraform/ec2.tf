@@ -1,5 +1,5 @@
 resource "aws_instance" "web" {
-  ami                    = "ami-ubuntu-24"
+  ami                    = "ami-00d8fc944fb171e29"
   instance_type          = "t3.micro"
   subnet_id              = aws_subnet.public.id
   private_ip             = "10.0.0.5"
