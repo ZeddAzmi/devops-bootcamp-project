@@ -1,0 +1,14 @@
+- hosts: monitoring
+  become: true
+  tasks:
+    - name: Run Prometheus
+      docker_container:
+        name: prometheus
+        image: prom/prometheus
+
+    - name: Run Grafana
+      docker_container:
+        name: grafana
+        image: grafana/grafana
+        ports:
+          - "3000:3000"

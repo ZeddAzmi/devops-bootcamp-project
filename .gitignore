@@ -1,0 +1,20 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+# Ansible
+*.retry
+
+# SSH & Keys
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+
+# Env
+.env
+
+# OS
+.DS_Store

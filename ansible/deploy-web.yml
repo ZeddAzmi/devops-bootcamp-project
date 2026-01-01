@@ -1,0 +1,9 @@
+- hosts: web
+  become: true
+  tasks:
+    - name: Run web app
+      docker_container:
+        name: my-devops-project
+        image: your-ecr-image:latest
+        ports:
+          - "80:80"
