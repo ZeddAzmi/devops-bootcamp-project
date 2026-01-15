@@ -30,11 +30,14 @@
      name: docker
 
 
-  - name: Pull image from ECR
-    docker_container:
-        name: my-devops-project
-        image: "{{ image_full }}"
-        state: started
-        restart_policy: always
-        ports:
-          - "80:80"
+  - name: Run container from ECR image
+  docker_container:
+    name: my-devops-project
+    image: "{{ image_full }}"
+    state: started
+    restart_policy: always
+    ports:
+      - "80:80"
+    env:
+      USER_NAME: "Zedd Azmi"
+
