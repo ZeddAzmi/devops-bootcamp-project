@@ -1,0 +1,10 @@
+- hosts: web
+  become: true
+  tasks:
+    - name: Run node exporter
+      docker_container:
+        name: node-exporter
+        image: prom/node-exporter:latest
+        state: started
+        restart_policy: always
+        network_mode: host
