@@ -22,3 +22,8 @@ resource "aws_iam_instance_profile" "ssm_profile" {
   name = "devops-ec2-ssm-profile"
   role = aws_iam_role.ssm_role.name
 }
+
+resource "aws_iam_role_policy_attachment" "ecr_attach" {
+  role       = aws_iam_role.ssm_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser"
+}
