@@ -1,0 +1,25 @@
+- hosts: web
+  become: true
+  vars:
+    aws_region: ap-southeast-1
+    aws_account_id: 439196889861
+    ecr_repo: devops-bootcamp/final-project-zeddazmi
+    image_tag: latest
+    image_full: "{{ aws_account_id }}.dkr.ecr.{{ aws_region }}.amazonaws.com/{{ ecr_repo }}:{{ image_tag }}"
+
+  tasks:
+    - name: Login to ECR
+      shell: |
+        aws ecr get-login-password --region {{ aws_region }} \
+        | docker login --username AWS --password-stdin {{ aws_account_id }}.dkr.ecr.{{ aws_region }}.amazonaws.com
+      args:
+        executable: /bin/bash
+
+    - name: Pull image from ECR
+      docker_container:
+        name: my-devops-project
+        image: "{{ image_full }}"
+        state: started
+        restart_policy: always
+        ports:
+          - "80:80"
